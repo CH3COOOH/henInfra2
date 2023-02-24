@@ -24,7 +24,7 @@ if len(sys.argv) == 2 and sys.argv[1] == '-i':
 		with open('/etc/rc.local', 'r+') as o:
 			buf = o.read()
 			o.seek(0, 0)
-			o.write('\nexport PATH=$PATH:%s' % path_app + buf)
+			o.write('export PATH=$PATH:%s\n' % path_app + buf)
 		with open('/etc/profile', 'a') as o:
 			o.write('\nexport PATH=$PATH:%s' % path_app)
 		os.system('source /etc/profile')
