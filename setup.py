@@ -11,7 +11,7 @@ if len(path_app) == 0:
 	os.mkdir('bin')
 	path_app = path_default
 
-if len(sys.argv) == 2 and sys.args[1] == '-i':
+if len(sys.argv) == 2 and sys.argv[1] == '-i':
 
 	os.system('cp /etc/profile /etc/profile_%d' % time.time())
 	os.system('cp /etc/rc.local /etc/rc.local_%d' % time.time())
