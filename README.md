@@ -6,4 +6,4 @@ Infrastructures of network, technology POWERFULLY **MLGB** (Makes Life Get Bette
 Copy `applist.sample` to the same folder with name "applist.txt". Then customize `applist.txt` by add "#" at head of APP names that you want to exclude. Finally, run `python3 setup.py -i` (if it is the 1st time that you deploy henInfra) or `python3 setup.py` (for APPs update).
 
 # Notice
-Since `rc.local` is launched before `/etc/profile`, you need add PATH to `rc.local` manually if you are planning to use it.
+Since `rc.local` is launched before `/etc/profile`, you need add `export PATH=$PATH:/henInfra2/bin` (sample) to `rc.local` manually if you are planning to use it.
