@@ -1,5 +1,6 @@
 import os
 import time
+import sys
 
 URL = 'https://github.com/CH3COOOH/henInfra2/releases/download/latest/'
 
@@ -10,20 +11,22 @@ if len(path_app) == 0:
 	os.mkdir('bin')
 	path_app = path_default
 
-os.system('cp /etc/profile /etc/profile_%d' % time.time())
-os.system('cp /etc/rc.local /etc/rc.local_%d' % time.time())
+if len(sys.argv) == 2 and sys.args[1] == '-i':
 
-try:
-	with open('/etc/rc.local', 'r+') as o:
-		buf = o.read()
-		o.seek(0, 0)
-		o.write('\nexport PATH=$PATH:%s' % path_app + buf)
-	with open('/etc/profile', 'a') as o:
-		o.write('\nexport PATH=$PATH:%s' % path_app)
-	os.system('source /etc/profile')
-except:
-	print('Failed to write /etc/profile or /etc/rc.local. Are you sudoer?')
-	exit(-1)
+	os.system('cp /etc/profile /etc/profile_%d' % time.time())
+	os.system('cp /etc/rc.local /etc/rc.local_%d' % time.time())
+
+	try:
+		with open('/etc/rc.local', 'r+') as o:
+			buf = o.read()
+			o.seek(0, 0)
+			o.write('\nexport PATH=$PATH:%s' % path_app + buf)
+		with open('/etc/profile', 'a') as o:
+			o.write('\nexport PATH=$PATH:%s' % path_app)
+		os.system('source /etc/profile')
+	except:
+		print('Failed to write /etc/profile or /etc/rc.local. Are you sudoer?')
+		exit(-1)
 
 isDownload = input('PATH setting finished. Download APPs now?')
 if isDownload == 'y':
