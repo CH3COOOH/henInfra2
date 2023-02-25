@@ -12,7 +12,6 @@ if len(path_app) == 0:
 		os.mkdir('bin')
 	except:
 		print('Cannot create new directory \"bin\" in current path. Is it exist?')
-		exit(-1)
 	path_app = path_default
 
 if len(sys.argv) == 2 and sys.argv[1] == '-i':
