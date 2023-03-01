@@ -25,7 +25,7 @@ if len(sys.argv) == 2 and sys.argv[1] == '-i':
 		# 	o.seek(0, 0)
 		# 	o.write('export PATH=$PATH:%s\n' % path_app + buf)
 		with open('/etc/profile', 'a') as o:
-			o.write('\nexport PATH=$PATH:%s\n' % path_app)
+			o.write('\n\nexport PATH=$PATH:%s\n' % path_app)
 		os.system('source /etc/profile')
 	except:
 		print('Failed to write /etc/profile. Are you sudoer?')
@@ -46,7 +46,7 @@ if isDownload == 'y':
 	print(applist)
 	for a in applist:
 		print('Downloading [%s]...' % a)
-		os.system('wget %s%s' % (URL, a))
+		os.system('wget %s%s -O %s' % (URL, a, a))
 
 	os.system('chmod +x %s/*' % path_app)
 	print('All finished.')
